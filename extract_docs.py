@@ -1,7 +1,10 @@
 import os
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+from dotenv import load_dotenv
 from openai import OpenAI
 import chromadb
+
+load_dotenv()
 
 def read_files_from_directory(directory, file_extensions=(".md")):
     repo_data = {}
@@ -23,7 +26,7 @@ for file_path, content in docs.items():
     for i, chunk in enumerate(chunks):
         docs_chunks.append({"source": file_path, "chunk_id": i, "content": chunk})
 
-client = OpenAI(api_key="your-api-key")
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 vector_db = chromadb.PersistentClient(path="./chroma_db")
 
 collection = vector_db.get_or_create_collection(name="solidvessel_docs")
