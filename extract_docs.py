@@ -1,4 +1,5 @@
 import os
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 def read_files_from_directory(directory, file_extensions=(".md")):
     repo_data = {}
@@ -13,4 +14,11 @@ def read_files_from_directory(directory, file_extensions=(".md")):
 repo_path = "../Solidvessel"
 docs = read_files_from_directory(repo_path)
 
-print(len(docs))
+splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
+docs_chunks = []
+for file_path, content in docs.items():
+    chunks = splitter.split_text(content)
+    for i, chunk in enumerate(chunks):
+        docs_chunks.append({"source": file_path, "chunk_id": i, "content": chunk})
+
+print(len(docs_chunks))
