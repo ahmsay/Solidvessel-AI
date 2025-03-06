@@ -33,7 +33,7 @@ collection = vector_db.get_or_create_collection(name="solidvessel_docs")
 
 for chunk in docs_chunks:
     embedding = client.embeddings.create(
-        input=chunk["content"], model="text-embedding-3"
+        input=chunk["content"], model="text-embedding-3-small"
     ).data[0].embedding
 
     collection.add(
