@@ -15,7 +15,7 @@ query_embedding = client.embeddings.create(input=query, model="text-embedding-3-
 
 results = collection.query(
     query_embeddings=[query_embedding], 
-    n_results=3
+    n_results=1
 )
 
 print("\n🔍 **Top Matches:**\n")
