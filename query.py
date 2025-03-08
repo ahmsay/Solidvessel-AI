@@ -18,6 +18,5 @@ results = collection.query(
     n_results=1
 )
 
-print("\n🔍 **Top Matches:**\n")
 for i, doc in enumerate(results["documents"][0]):
     print(f"{i+1}. {doc}\n")
