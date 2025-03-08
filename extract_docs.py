@@ -1,6 +1,5 @@
 import os
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-#import re
 from dotenv import load_dotenv
 from openai import OpenAI
 import chromadb
@@ -17,17 +16,8 @@ def read_files_from_directory(directory, file_extensions=(".md")):
                     repo_data[file_path] = f.read()
     return repo_data
 
-#def strip_markdown(md_text):
-#    md_text = re.sub(r"!\[.*?\]\(.*?\)", "", md_text)  # Remove images
-#    md_text = re.sub(r"\[.*?\]\(.*?\)", "", md_text)  # Remove links
-#    md_text = re.sub(r"`([^`]*)`", r"\1", md_text)  # Remove inline code formatting
-#    md_text = re.sub(r"#{1,6}\s*", "", md_text)  # Remove headings
-#    md_text = re.sub(r"\*{1,2}([^*]+)\*{1,2}", r"\1", md_text)  # Remove bold/italic
-#    return md_text.strip()
-
 repo_path = "../Solidvessel"
 docs = read_files_from_directory(repo_path)
-#cleaned_docs = [strip_markdown(doc) for doc in docs]
 
 splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
 docs_chunks = []
