@@ -49,5 +49,6 @@ for chunk in docs_chunks:
     collection.add(
         documents=[chunk["content"]],
         metadatas=[{"source": chunk["source"], "chunk_id": chunk["chunk_id"]}],
-        ids=[f"{chunk['source']}_{chunk['chunk_id']}"]
+        ids=[f"{chunk['source']}_{chunk['chunk_id']}"],
+        embeddings=[embedding]
     )
