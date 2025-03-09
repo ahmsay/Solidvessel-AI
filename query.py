@@ -18,5 +18,7 @@ results = collection.query(
     n_results=1
 )
 
-for i, doc in enumerate(results["documents"][0]):
-    print(f"{i+1}. {doc}\n")
+if results["distances"][0][0] < 0.7:
+    print("❌ This question is not related to the project.")
+else:
+    print("✅ Answer:", results["documents"][0][0])
