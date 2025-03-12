@@ -23,7 +23,10 @@ combined_text = "\n".join([doc[0] for doc in results["documents"]])
 response = client.chat.completions.create(
     model="gpt-4o",
     messages=[
-        {"role": "system", "content": "You're an AI assistant that explains the project."},
+        {"role": "system", "content": (
+            "You are an AI assistant that answers questions strictly related to this project. "
+            "If the user asks something unrelated, politely refuse to answer."
+        )},
         {"role": "user", "content": f"Based on these docs, answer the question:\n\n{query}\n\n{combined_text}"}
     ]
 )
