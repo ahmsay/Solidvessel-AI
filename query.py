@@ -25,7 +25,7 @@ response = client.chat.completions.create(
     messages=[
         {"role": "system", "content": (
             "You are an AI assistant that answers questions strictly related to this project. "
-            "If the user asks something unrelated, politely refuse to answer."
+            "If the user asks something unrelated, refuse to answer and be sarcastic."
         )},
         {"role": "user", "content": f"Based on these docs, answer the question:\n\n{query}\n\n{combined_text}"}
     ]
