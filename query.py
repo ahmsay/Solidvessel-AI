@@ -28,4 +28,4 @@ response = client.chat.completions.create(
     ]
 )
 
-print("✅ AI-Expanded Answer:\n", response.choices[0].message.content)
+print("Answer:\n", response.choices[0].message.content)
