@@ -1,4 +1,2 @@
 .env
 chroma_db
-server/package
-server/lambda_package.zip
