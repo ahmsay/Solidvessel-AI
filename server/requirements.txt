@@ -2,3 +2,4 @@ openai
 python-dotenv
 langchain-text-splitters
 chromadb
+python-git
