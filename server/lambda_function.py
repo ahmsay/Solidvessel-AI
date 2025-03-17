@@ -4,6 +4,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from dotenv import load_dotenv
 from openai import OpenAI
 import chromadb
+from git import Repo
 
 def lambda_handler(event, context):
     return {
