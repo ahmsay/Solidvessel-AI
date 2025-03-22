@@ -1,5 +1,0 @@
-openai
-python-dotenv
-langchain-text-splitters
-chromadb
-gitpython
