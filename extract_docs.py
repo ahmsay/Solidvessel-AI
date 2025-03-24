@@ -37,9 +37,14 @@ def add_embeddings():
             embeddings=[embedding]
         )
 
+def upload_to_s3():
+    print("Uploading to S3...")
+
 load_dotenv()
 docs = read_files_from_directory(os.getenv("REPO_PATH"))
 docs_chunks = split_to_chunks()
 vector_db = chromadb.PersistentClient(path="./chroma_db")
 collection = vector_db.get_or_create_collection(name="solidvessel_docs")
 add_embeddings()
+if (os.getenv("UPLOAD_TO_S3")):
+    upload_to_s3()
