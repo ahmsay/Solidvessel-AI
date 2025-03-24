@@ -16,8 +16,7 @@ def read_files_from_directory(directory, file_extensions=(".md")):
                     repo_data[file_path] = f.read()
     return repo_data
 
-repo_path = "../Solidvessel"
-docs = read_files_from_directory(repo_path)
+docs = read_files_from_directory(os.getenv("REPO_PATH"))
 
 splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
 docs_chunks = []
