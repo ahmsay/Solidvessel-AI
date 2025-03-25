@@ -7,11 +7,11 @@ import tarfile
 import boto3
 
 load_dotenv()
-chroma_db_path = "./chroma_db"
+chroma_db_path = os.path.join(os.getcwd(), "chroma_db")
 s3_bucket = "solidvessel-docs-embeddings"
 repo_path = os.getenv("REPO_PATH")
 
-def read_files_from_directory(file_extensions=(".md")):
+def read_files_from_directory(file_extensions=(".md",)):
     print("Reading the files...")
     repo_data = {}
     for root, _, files in os.walk(repo_path):
