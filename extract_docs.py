@@ -7,6 +7,7 @@ import tarfile
 import boto3
 
 def read_files_from_directory(directory, file_extensions=(".md")):
+    print("Reading the files...")
     repo_data = {}
     for root, _, files in os.walk(directory):
         for file in files:
@@ -17,6 +18,7 @@ def read_files_from_directory(directory, file_extensions=(".md")):
     return repo_data
 
 def split_to_chunks():
+    print("Splitting files into chunks...")
     splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
     docs_chunks = []
     for file_path, content in docs.items():
@@ -26,6 +28,7 @@ def split_to_chunks():
     return docs_chunks
 
 def add_embeddings():
+    print("Adding embeddings...")
     client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
     for chunk in docs_chunks:
         embedding = client.embeddings.create(
@@ -40,6 +43,7 @@ def add_embeddings():
         )
 
 def upload_to_s3(chroma_db_path, s3_bucket):
+    print("Uploading to S3...")
     s3_key = "chroma_db.tar.gz"
     tar_path = s3_key
     with tarfile.open(tar_path, "w:gz") as tar:
@@ -60,3 +64,5 @@ add_embeddings()
 
 if (os.getenv("UPLOAD_TO_S3")):
     upload_to_s3(chroma_db_path, s3_bucket="solidvessel-docs-embeddings")
+
+print("Done!")
