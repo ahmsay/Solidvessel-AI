@@ -6,6 +6,10 @@ import chromadb
 import tarfile
 import boto3
 
+load_dotenv()
+chroma_db_path="./chroma_db"
+s3_bucket="solidvessel-docs-embeddings"
+
 def read_files_from_directory(directory, file_extensions=(".md")):
     print("Reading the files...")
     repo_data = {}
@@ -27,7 +31,7 @@ def split_to_chunks():
             docs_chunks.append({"source": file_path, "chunk_id": i, "content": chunk})
     return docs_chunks
 
-def add_embeddings():
+def add_embeddings(collection):
     print("Adding embeddings...")
     client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
     for chunk in docs_chunks:
@@ -42,7 +46,13 @@ def add_embeddings():
             embeddings=[embedding]
         )
 
-def upload_to_s3(chroma_db_path, s3_bucket):
+def create_vector_db():
+    print("Creating Vector DB...")
+    vector_db = chromadb.PersistentClient(path=chroma_db_path)
+    collection = vector_db.get_or_create_collection(name="solidvessel_docs")
+    add_embeddings(collection)
+
+def upload_to_s3():
     print("Uploading to S3...")
     s3_key = "chroma_db.tar.gz"
     tar_path = s3_key
@@ -53,16 +63,9 @@ def upload_to_s3(chroma_db_path, s3_bucket):
     s3.upload_file(tar_path, s3_bucket, s3_key)
     print(f"Uploaded {tar_path} to s3://{s3_bucket}/{s3_key}")
 
-load_dotenv()
 docs = read_files_from_directory(os.getenv("REPO_PATH"))
 docs_chunks = split_to_chunks()
-
-chroma_db_path="./chroma_db"
-vector_db = chromadb.PersistentClient(path="./chroma_db")
-collection = vector_db.get_or_create_collection(name="solidvessel_docs")
-add_embeddings()
-
+create_vector_db()
 if (os.getenv("UPLOAD_TO_S3")):
-    upload_to_s3(chroma_db_path, s3_bucket="solidvessel-docs-embeddings")
-
+    upload_to_s3()
 print("Done!")
