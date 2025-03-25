@@ -7,13 +7,14 @@ import tarfile
 import boto3
 
 load_dotenv()
-chroma_db_path="./chroma_db"
-s3_bucket="solidvessel-docs-embeddings"
+chroma_db_path = "./chroma_db"
+s3_bucket = "solidvessel-docs-embeddings"
+repo_path = os.getenv("REPO_PATH")
 
-def read_files_from_directory(directory, file_extensions=(".md")):
+def read_files_from_directory(file_extensions=(".md")):
     print("Reading the files...")
     repo_data = {}
-    for root, _, files in os.walk(directory):
+    for root, _, files in os.walk(repo_path):
         for file in files:
             if file.endswith(file_extensions):
                 file_path = os.path.join(root, file)
@@ -63,7 +64,7 @@ def upload_to_s3():
     s3.upload_file(tar_path, s3_bucket, s3_key)
     print(f"Uploaded {tar_path} to s3://{s3_bucket}/{s3_key}")
 
-docs = read_files_from_directory(os.getenv("REPO_PATH"))
+docs = read_files_from_directory()
 docs_chunks = split_to_chunks()
 create_vector_db()
 if (os.getenv("UPLOAD_TO_S3")):
