@@ -2,6 +2,9 @@ version: 0.2
 env:
   shell: bash
 phases:
+  install:
+    commands:
+    - pip install requirements.txt
   pre_build:
     commands:
     - git clone https://github.com/ahmsay/Solidvessel.git
