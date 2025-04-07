@@ -1,0 +1,10 @@
+version: 0.2
+env:
+  shell: bash
+phases:
+  pre_build:
+    commands:
+    - git clone https://github.com/ahmsay/Solidvessel.git
+  build:
+    commands:
+    - python extract_docs.py
