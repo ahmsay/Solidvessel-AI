@@ -18,11 +18,9 @@ def get_vector_db():
         s3.download_file(s3_bucket, s3_key, working_dir)
         with tarfile.open(".", 'r:gz') as tar:
             tar.extractall(path=working_dir)
-        vector_db = chromadb.PersistentClient(path="./chroma_db")
-        return vector_db
-    else:
-        vector_db = chromadb.PersistentClient(path="./chroma_db")
-        return vector_db
+
+    vector_db = chromadb.PersistentClient(path="./chroma_db")
+    return vector_db
 
 vector_db = get_vector_db()
 collection = vector_db.get_or_create_collection(name="solidvessel_docs")
