@@ -7,9 +7,7 @@ import tarfile
 
 load_dotenv()
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
-def get_vector_db():
+def get_collection():
     if (os.getenv("LOCAL_ENV")):
         s3 = boto3.client('s3')
         s3_bucket = "solidvessel-docs-embeddings"
@@ -20,13 +18,12 @@ def get_vector_db():
             tar.extractall(path=working_dir)
 
     vector_db = chromadb.PersistentClient(path="./chroma_db")
-    return vector_db
-
-vector_db = get_vector_db()
-collection = vector_db.get_or_create_collection(name="solidvessel_docs")
+    return vector_db.get_or_create_collection(name="solidvessel_docs")
 
 query = input("Enter your question: ")
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 query_embedding = client.embeddings.create(input=query, model="text-embedding-3-small").data[0].embedding
+collection = get_collection()
 
 results = collection.query(
     query_embeddings=[query_embedding], 
