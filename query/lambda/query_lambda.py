@@ -11,12 +11,12 @@ load_dotenv()
 s3 = boto3.client('s3')
 s3_bucket = "solidvessel-docs-embeddings"
 s3_key = "chroma_db.tar.gz"
-working_dir = "."
+working_dir = "/tmp"
 s3.download_file(s3_bucket, s3_key, working_dir)
 with tarfile.open(".", 'r:gz') as tar:
     tar.extractall(path=working_dir)
 
-vector_db = chromadb.PersistentClient(path="./chroma_db")
+vector_db = chromadb.PersistentClient(path="/tmp/chroma_db")
 collection = vector_db.get_or_create_collection(name="solidvessel_docs")
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
