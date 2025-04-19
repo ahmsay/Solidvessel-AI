@@ -2,7 +2,6 @@ import chromadb
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
-import boto3
 import tarfile
 import json
 

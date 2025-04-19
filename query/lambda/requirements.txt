@@ -1,4 +1,3 @@
 openai
 python-dotenv
 chromadb
-boto3
