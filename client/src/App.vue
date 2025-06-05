@@ -46,7 +46,7 @@ function clear() {
       <br/>
       <button id="ask-button" @click="ask()">Ask</button>
       <button id="clear-button" style="margin-left: 10px;" @click="clear()">Clear</button>
-      <p>{{ answer }}</p>
+      <p style="margin-top: 10px;">{{ answer }}</p>
     </div>
   </header>
 </template>
