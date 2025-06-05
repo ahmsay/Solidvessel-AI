@@ -23,7 +23,6 @@ function ask() {
     .then(response => {
       console.log('Response:', response.data)
       answer.value = response.data
-      question.value = ''
     })
     .catch(error => {
       console.error('Error:', error)
@@ -34,6 +33,11 @@ function ask() {
     alert('Failed to send question. Please try again.')
   }
 }
+
+function clear() {
+  question.value = ''
+  answer.value = ''
+}
 </script>
 
 <template>
@@ -43,6 +47,7 @@ function ask() {
       <textarea v-model="question" placeholder="Type your question here..." rows="4"></textarea>
       <br/>
       <button @click="ask()">Ask</button>
+      <button style="margin-left: 10px;" @click="clear()">Clear</button>
       <p>{{ answer }}</p>
     </div>
   </header>
