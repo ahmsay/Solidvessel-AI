@@ -3,8 +3,7 @@ import { ref } from 'vue'
 
 const question = ref('')
 
-function send() {
-  console.log('Sending question:', question.value)
+function ask() {
   question.value = ''
 }
 </script>
@@ -15,7 +14,7 @@ function send() {
       <h1>Ask something about the project</h1>
       <textarea v-model="question" placeholder="Type your question here..." rows="4"></textarea>
       <br/>
-      <button @click="send()">Ask</button>
+      <button @click="ask()">Ask</button>
     </div>
   </header>
 </template>
