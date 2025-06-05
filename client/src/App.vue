@@ -80,13 +80,16 @@ textarea {
   background-color: #f8f9fa;
 }
 
-#ask-button {
+button {
   padding: 10px 20px;
-  background-color: #4CAF50;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+#ask-button {
+  background-color: #4CAF50;
 }
 
 #ask-button:hover {
@@ -94,12 +97,7 @@ textarea {
 }
 
 #clear-button {
-  padding: 10px 20px;
   background-color: #1c84d9;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
 #clear-button:hover {
