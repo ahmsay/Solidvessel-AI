@@ -44,8 +44,8 @@ function clear() {
       <h1>Ask something about the project</h1>
       <textarea v-model="question" placeholder="Type your question here..." rows="4"></textarea>
       <br/>
-      <button @click="ask()">Ask</button>
-      <button style="margin-left: 10px;" @click="clear()">Clear</button>
+      <button id="ask-button" @click="ask()">Ask</button>
+      <button id="clear-button" style="margin-left: 10px;" @click="clear()">Clear</button>
       <p>{{ answer }}</p>
     </div>
   </header>
@@ -55,15 +55,15 @@ function clear() {
 header {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
+  height: 100vh;
   margin: 0;
   padding: 0;
 }
 
 div {
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
 h1 {
@@ -77,9 +77,10 @@ textarea {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  background-color: #f8f9fa;
 }
 
-button {
+#ask-button {
   padding: 10px 20px;
   background-color: #4CAF50;
   color: white;
@@ -88,7 +89,20 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+#ask-button:hover {
   background-color: #45a049;
+}
+
+#clear-button {
+  padding: 10px 20px;
+  background-color: #1c84d9;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#clear-button:hover {
+  background-color: #1976D2;
 }
 </style>
