@@ -1,10 +1,38 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import axios from 'axios'
 
 const question = ref('')
+const answer = ref('')
+
+const API_URL = 'https://kw5uzneejhbujvqypkrcsi4wji0dodqu.lambda-url.eu-central-1.on.aws/'
 
 function ask() {
-  question.value = ''
+  const questionText = question.value.trim()
+  
+  if (!questionText) {
+    alert('Please enter a question')
+    return
+  }
+
+  try {
+    console.log('Sending question:', questionText)
+      axios.post(API_URL, {
+      body: questionText
+    })
+    .then(response => {
+      console.log('Response:', response.data)
+      answer.value = response.data
+      question.value = ''
+    })
+    .catch(error => {
+      console.error('Error:', error)
+      alert('Failed to send question. Please try again.')
+    })
+  } catch (error) {
+    console.error('Error:', error)
+    alert('Failed to send question. Please try again.')
+  }
 }
 </script>
 
@@ -15,6 +43,7 @@ function ask() {
       <textarea v-model="question" placeholder="Type your question here..." rows="4"></textarea>
       <br/>
       <button @click="ask()">Ask</button>
+      <p>{{ answer }}</p>
     </div>
   </header>
 </template>
