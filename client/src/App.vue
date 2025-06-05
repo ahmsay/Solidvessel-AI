@@ -11,17 +11,15 @@ function ask() {
   const questionText = question.value.trim()
   
   if (!questionText) {
-    alert('Please enter a question')
+    alert('Please enter a question.')
     return
   }
 
   try {
-    console.log('Sending question:', questionText)
-      axios.post(API_URL, {
+    axios.post(API_URL, {
       body: questionText
     })
     .then(response => {
-      console.log('Response:', response.data)
       answer.value = response.data
     })
     .catch(error => {
