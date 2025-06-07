@@ -4,10 +4,11 @@ import axios from 'axios'
 
 const question = ref('')
 const answer = ref('')
+const isLoading = ref(false)
 
 const API_URL = 'https://kw5uzneejhbujvqypkrcsi4wji0dodqu.lambda-url.eu-central-1.on.aws/'
 
-function ask() {
+async function ask() {
   const questionText = question.value.trim()
   
   if (!questionText) {
@@ -16,19 +17,16 @@ function ask() {
   }
 
   try {
-    axios.post(API_URL, {
+    isLoading.value = true
+    const response = await axios.post(API_URL, {
       body: questionText
     })
-    .then(response => {
-      answer.value = response.data
-    })
-    .catch(error => {
-      console.error('Error:', error)
-      alert('Failed to send question. Please try again.')
-    })
+    answer.value = response.data
   } catch (error) {
     console.error('Error:', error)
     alert('Failed to send question. Please try again.')
+  } finally {
+    isLoading.value = false
   }
 }
 
@@ -44,7 +42,7 @@ function clear() {
       <h1>Ask something about the project</h1>
       <textarea v-model="question" placeholder="Type your question here..." rows="4"></textarea>
       <br/>
-      <button id="ask-button" @click="ask()">Ask</button>
+      <button id="ask-button" @click="ask()" :disabled="isLoading">Ask</button>
       <button id="clear-button" style="margin-left: 10px;" @click="clear()">Clear</button>
       <p style="margin-top: 10px;">{{ answer }}</p>
     </div>
