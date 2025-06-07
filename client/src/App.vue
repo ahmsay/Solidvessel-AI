@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 
 const question = ref('')
 const answer = ref('')
@@ -24,7 +24,10 @@ async function ask() {
     answer.value = response.data
   } catch (error) {
     console.error('Error:', error)
-    alert('Failed to send question. Please try again.')
+    const errorMessage = (error as AxiosError).response?.status === 403 
+      ? 'You are not authorized.'
+      : 'Failed to send question. Please try again.'
+    alert(errorMessage)
   } finally {
     isLoading.value = false
   }
