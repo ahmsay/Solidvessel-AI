@@ -42,11 +42,10 @@ function clear() {
 <template>
   <header>
     <div>
-      <h1>Ask something about the project</h1>
-      <textarea v-model="question" placeholder="Type your question here..." rows="4"></textarea>
-      <br/>
-      <button id="ask-button" @click="ask()" :disabled="isLoading">Ask</button>
-      <button id="clear-button" style="margin-left: 10px;" @click="clear()">Clear</button>
+      <span class="text-h4">Ask something about the project</span>
+      <v-textarea v-model="question" label="Type your question here..." rows="4"></v-textarea>
+      <v-btn color="primary" @click="ask()" :disabled="isLoading">Ask</v-btn>
+      <v-btn color="secondary" class="ml-3" @click="clear()">Clear</v-btn>
       <p style="margin-top: 10px;">{{ answer }}</p>
     </div>
   </header>
@@ -70,47 +69,5 @@ div {
 h1 {
   margin: 0;
   padding: 0;
-}
-
-textarea {
-  width: 80%;
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f8f9fa;
-}
-
-button {
-  padding: 10px 20px;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-button:disabled:hover {
-  background-color: inherit;
-}
-
-#ask-button {
-  background-color: #4CAF50;
-}
-
-#ask-button:hover {
-  background-color: #45a049;
-}
-
-#clear-button {
-  background-color: #1c84d9;
-}
-
-#clear-button:hover {
-  background-color: #1976D2;
 }
 </style>
