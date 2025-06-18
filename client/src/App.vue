@@ -42,11 +42,13 @@ function clear() {
 <template>
   <header>
     <div>
-      <span class="text-h4">Ask something about the project</span>
+      <div class="mb-5">
+        <span class="text-h4">Ask something about the project</span>
+      </div>
       <v-textarea v-model="question" label="Type your question here..." rows="4"></v-textarea>
       <v-btn color="primary" @click="ask()" :disabled="isLoading">Ask</v-btn>
       <v-btn color="secondary" class="ml-3" @click="clear()">Clear</v-btn>
-      <p style="margin-top: 10px;">{{ answer }}</p>
+      <p class="mt-5">{{ answer }}</p>
     </div>
   </header>
 </template>
@@ -64,10 +66,5 @@ header {
 
 div {
   text-align: center;
-}
-
-h1 {
-  margin: 0;
-  padding: 0;
 }
 </style>
