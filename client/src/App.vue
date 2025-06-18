@@ -40,17 +40,27 @@ function clear() {
 </script>
 
 <template>
-  <header>
-    <div>
-      <div class="mb-5">
-        <span class="text-h4">Ask something about the project</span>
-      </div>
-      <v-textarea v-model="question" label="Type your question here..." rows="4"></v-textarea>
-      <v-btn color="primary" @click="ask()" :disabled="isLoading">Ask</v-btn>
-      <v-btn color="secondary" class="ml-3" @click="clear()">Clear</v-btn>
-      <p class="mt-5">{{ answer }}</p>
-    </div>
-  </header>
+  <v-app style="background: linear-gradient(135deg, #456aaf, #d4d0d0);">
+    <v-main>
+      <v-container fluid>
+        <v-row>
+          <v-col cols="12" md="4" sm="6">
+            <v-row justify="center">
+              <div>
+                <div class="mb-5">
+                  <span class="text-h4">Ask something about the project</span>
+                </div>
+                <v-textarea v-model="question" label="Type your question here..." rows="4"></v-textarea>
+                <v-btn color="primary" @click="ask()" :disabled="isLoading">Ask</v-btn>
+                <v-btn color="secondary" class="ml-3" @click="clear()">Clear</v-btn>
+                <p class="mt-5">{{ answer }}</p>
+              </div>
+            </v-row>
+          </v-col>
+        </v-row>
+    </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <style scoped>
@@ -62,9 +72,5 @@ header {
   height: 100vh;
   margin: 0;
   padding: 0;
-}
-
-div {
-  text-align: center;
 }
 </style>
