@@ -44,7 +44,7 @@ function clear() {
     <v-main>
       <v-container fluid>
         <v-row>
-          <v-col cols="12" md="4" sm="6">
+          <v-col cols="12">
             <v-row justify="center">
               <div>
                 <div class="mb-5">
