@@ -42,19 +42,25 @@ function clear() {
 <template>
   <v-app style="background: linear-gradient(135deg, #456aaf, #d4d0d0);">
     <v-main>
-      <v-container fluid>
+      <v-container>
         <v-row>
           <v-col cols="12">
             <v-row justify="center">
-              <div>
-                <div class="mb-5">
-                  <span class="text-h4">Ask something about the project</span>
-                </div>
-                <v-textarea v-model="question" label="Type your question here..." rows="4"></v-textarea>
-                <v-btn color="primary" @click="ask()" :disabled="isLoading">Ask</v-btn>
-                <v-btn color="secondary" class="ml-3" @click="clear()">Clear</v-btn>
-                <p class="mt-5">{{ answer }}</p>
-              </div>
+              <v-card>
+                <template v-slot:title>
+                  <span class="font-weight-black">Ask something about the project</span>
+                </template>
+                <v-card-text>
+                  <v-textarea v-model="question" label="Type your question here..." rows="4"></v-textarea>
+                </v-card-text>
+                <v-card-text>
+                  <div class="d-flex justify-center">
+                    <v-btn color="primary" @click="ask()" :disabled="isLoading">Ask</v-btn>
+                    <v-btn color="secondary" class="ml-3" @click="clear()">Clear</v-btn>
+                  </div>
+                </v-card-text>
+              </v-card>
+              <p class="mt-5">{{ answer }}</p>
             </v-row>
           </v-col>
         </v-row>
