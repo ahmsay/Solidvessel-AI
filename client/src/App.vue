@@ -55,11 +55,11 @@ function clear() {
               <v-card-text>
                 <v-btn color="primary" @click="ask()" :disabled="isLoading">Ask</v-btn>
                 <v-btn color="secondary" class="ml-3" @click="clear()" :disabled="isLoading">Clear</v-btn>
+                <p class="mt-5 text-center">{{ answer }}</p>
               </v-card-text>
             </v-card>
           </v-col>
         </v-row>
-        <p class="mt-5 text-center">{{ answer }}</p>
     </v-container>
     </v-main>
   </v-app>
