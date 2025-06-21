@@ -42,7 +42,7 @@ function clear() {
 <template>
   <v-app style="background: linear-gradient(135deg, #456aaf, #d4d0d0);">
     <v-main>
-      <v-container>
+      <v-container class="fill-height d-flex align-center">
         <v-row justify="center">
           <v-col cols="12" md="6" sm="8">
             <v-card color="transparent" flat>
