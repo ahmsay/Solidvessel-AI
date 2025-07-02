@@ -4,12 +4,15 @@ import axios, { AxiosError } from 'axios'
 
 const question = ref('')
 const answer = ref('')
+const previousQuestion = ref('')
 const isLoading = ref(false)
 
 const API_URL = 'https://kw5uzneejhbujvqypkrcsi4wji0dodqu.lambda-url.eu-central-1.on.aws/'
 
 async function ask() {
   const questionText = question.value.trim()
+  previousQuestion.value = questionText
+  question.value = ''
   
   if (!questionText) {
     alert('Please enter a question.')
@@ -53,7 +56,8 @@ function clear() {
                 <v-textarea v-model="question" label="Type your question here..." rows="4" @keyup.enter="ask()"></v-textarea>
               </v-card-text>
               <v-card-text>
-                <p class="mt-5 text-center">{{ answer }}</p>
+                <p class="text-center">{{ previousQuestion }}</p>
+                <p class="text-center">{{ answer }}</p>
               </v-card-text>
             </v-card>
           </v-col>
