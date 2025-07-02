@@ -11,13 +11,13 @@ const API_URL = 'https://kw5uzneejhbujvqypkrcsi4wji0dodqu.lambda-url.eu-central-
 
 async function ask() {
   const questionText = question.value.trim()
-  previousQuestion.value = questionText
-  question.value = ''
-  
+
   if (!questionText) {
-    alert('Please enter a question.')
     return
   }
+
+  previousQuestion.value = questionText
+  question.value = ''
 
   try {
     isLoading.value = true
