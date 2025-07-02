@@ -53,8 +53,6 @@ function clear() {
                 <v-textarea v-model="question" label="Type your question here..." rows="4" @keyup.enter="ask()"></v-textarea>
               </v-card-text>
               <v-card-text>
-                <v-btn color="primary" @click="ask()" :disabled="isLoading">Ask</v-btn>
-                <v-btn color="secondary" class="ml-3" @click="clear()" :disabled="isLoading">Clear</v-btn>
                 <p class="mt-5 text-center">{{ answer }}</p>
               </v-card-text>
             </v-card>
