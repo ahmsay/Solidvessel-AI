@@ -56,8 +56,8 @@ function clear() {
                 <v-textarea v-model="question" label="Type your question here..." rows="4" @keyup.enter="ask()"></v-textarea>
               </v-card-text>
               <v-card-text>
-                <p class="text-center">{{ previousQuestion }}</p>
-                <p class="text-center">{{ answer }}</p>
+                <p class="text-end">{{ previousQuestion }}</p>
+                <p class="text-start mt-3">{{ answer }}</p>
               </v-card-text>
             </v-card>
           </v-col>
