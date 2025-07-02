@@ -17,7 +17,7 @@ async function ask() {
   }
 
   previousQuestion.value = questionText
-  question.value = ''
+  clearForNextConversation()
 
   try {
     isLoading.value = true
@@ -36,7 +36,7 @@ async function ask() {
   }
 }
 
-function clear() {
+function clearForNextConversation() {
   question.value = ''
   answer.value = ''
 }
