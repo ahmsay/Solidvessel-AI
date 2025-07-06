@@ -84,6 +84,6 @@ header {
 .custom-chip {
   padding: 10px;
   border-radius: 10px;
-  background-color: rgba(69, 106, 175, 0.3)
+  background-color: rgba(80, 117, 187, 0.3)
 }
 </style>
