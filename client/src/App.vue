@@ -50,17 +50,17 @@ function clearForNextConversation() {
           <v-col cols="12" md="6" sm="8">
             <v-card color="transparent" flat>
               <template v-slot:title>
-                <span class="font-weight-black">Ask something about the project</span>
+                <span class="text-h5">Ask something about the project</span>
               </template>
               <v-card-text>
                 <v-textarea v-model="question" label="Type your question here..." rows="4" @keyup.enter="ask()"></v-textarea>
               </v-card-text>
-              <v-card-text>
+              <v-card-text class="pt-0">
                 <div class="text-end">
                   <p class="custom-chip">{{ previousQuestion }}</p>
                 </div>
                 <div class="text-start mt-3">
-                  <p class="custom-chip">{{ answer }}</p>
+                  <p class="custom-chip">{{ answer || '...' }}</p>
                 </div>
               </v-card-text>
             </v-card>
