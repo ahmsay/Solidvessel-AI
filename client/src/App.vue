@@ -81,9 +81,13 @@ header {
   margin: 0;
   padding: 0;
 }
+
 .custom-chip {
-  padding: 10px;
-  border-radius: 10px;
-  background-color: rgba(80, 117, 187, 0.3)
+    display: inline-block;
+    min-width: auto;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: rgba(80, 117, 187, 0.3);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 </style>
