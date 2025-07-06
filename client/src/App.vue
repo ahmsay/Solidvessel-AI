@@ -56,11 +56,11 @@ function clearForNextConversation() {
                 <v-textarea v-model="question" label="Type your question here..." rows="4" @keyup.enter="ask()"></v-textarea>
               </v-card-text>
               <v-card-text class="pt-0">
-                <div class="text-end">
+                <div v-if="previousQuestion" class="text-end">
                   <p class="custom-chip">{{ previousQuestion }}</p>
                 </div>
-                <div class="text-start mt-3">
-                  <p class="custom-chip">{{ answer || '...' }}</p>
+                <div v-if="answer" class="text-start mt-3">
+                  <p class="custom-chip">{{ answer }}</p>
                 </div>
               </v-card-text>
             </v-card>
