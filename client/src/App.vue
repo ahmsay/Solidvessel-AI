@@ -66,7 +66,7 @@ function clearForNextConversation() {
             </v-card>
           </v-col>
         </v-row>
-    </v-container>
+      </v-container>
     </v-main>
   </v-app>
 </template>
