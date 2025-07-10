@@ -48,7 +48,7 @@ function clearForNextConversation() {
       <v-container class="fill-height d-flex align-center">
         <v-row justify="center">
           <v-col cols="12" md="6" sm="8">
-            <v-card color="transparent" class="px-6 py-6" prepend-icon="$vuetify" elevation="12">
+            <v-card color="transparent" class="px-6 py-6" prepend-icon="mdi-message-text" elevation="12">
               <template v-slot:title>
                 <span class="text-h5">Ask something about the project</span>
               </template>
