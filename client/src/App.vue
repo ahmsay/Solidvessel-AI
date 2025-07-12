@@ -50,7 +50,7 @@ function clearForNextConversation() {
           <v-col cols="12" md="6" sm="8">
             <v-card color="transparent" class="px-6 py-6" prepend-icon="mdi-message-text" elevation="12">
               <template v-slot:title>
-                <span class="text-h5">Ask something about the project</span>
+                <span class="text-h5" style="white-space: normal; word-wrap: break-word;">Ask something about the project</span>
               </template>
               <v-card-text>
                 <v-textarea v-model="question" label="Type your question here..." rows="4" @keyup.enter="ask()"></v-textarea>
