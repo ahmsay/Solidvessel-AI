@@ -40,6 +40,10 @@ function clearForNextConversation() {
   question.value = ''
   answer.value = ''
 }
+
+function goToSource() {
+  window.open('https://github.com/ahmsay/Solidvessel-AI', '_blank')
+}
 </script>
 
 <template>
@@ -64,6 +68,11 @@ function clearForNextConversation() {
                 </div>
               </v-card-text>
             </v-card>
+            <v-footer color="transparent" class="d-flex justify-center">
+              <v-btn class="mt-2" variant="text" icon @click="goToSource">
+                <v-icon size="x-large">mdi-github</v-icon>
+              </v-btn>
+            </v-footer>
           </v-col>
         </v-row>
       </v-container>
