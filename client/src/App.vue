@@ -47,7 +47,7 @@ function goToSource() {
 </script>
 
 <template>
-  <v-app style="background: linear-gradient(135deg, #456aaf, #d4d0d0);">
+  <v-app class="bg-gradient">
     <v-main>
       <v-container class="fill-height d-flex align-center">
         <v-row justify="center">
@@ -98,5 +98,9 @@ header {
     border-radius: 20px;
     background-color: rgba(80, 117, 187, 0.3);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bg-gradient {
+    background: linear-gradient(135deg, #456aaf, #d4d0d0);
 }
 </style>
