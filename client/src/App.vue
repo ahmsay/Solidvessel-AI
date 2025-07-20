@@ -52,7 +52,7 @@ function goToSource() {
       <v-container class="fill-height d-flex align-center">
         <v-row justify="center">
           <v-col cols="12" md="6" sm="8">
-            <v-card color="transparent" class="px-sm-6 py-sm-6" prepend-icon="mdi-message-text" elevation="12">
+            <v-card color="rgba(58, 95, 166, 0.2)" class="px-sm-6 py-sm-6" prepend-icon="mdi-message-text" elevation="12">
               <template v-slot:title>
                 <span class="text-h5" style="white-space: normal; word-wrap: break-word;">Ask something about the project</span>
               </template>
